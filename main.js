@@ -6,7 +6,11 @@ const nodeSass = require("node-sass-middleware");
 const path = require("path");
 require("dotenv").config();
 
+const Todo = require("./model/todo");
+
 const app = express();
+
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + "/public"));
 
 app.use(
@@ -16,14 +20,25 @@ app.use(
   })
 );
 
-app.use(bodyParser.urlencoded({extended: false}));
 app.set("view engine", "ejs");
 app.use("/", router);
 
-mongoose.connect(process.env.DATABASE_URL, (err) => {
-  console.log(err);
-  if (err) return;
-  app.listen(8000, () => {
-    console.log("app is running");
-  });
+app.post("/", (req, res) => {
+  const tasks = {
+    name: req.body.name,
+  };
+  res.send(tasks);
 });
+
+mongoose.connect(
+  process.env.DATABASE_URL,
+  {useNewUrlParser: true},
+  {useUnifiedTopology: true},
+  (err) => {
+    console.log(err);
+    if (err) return;
+    app.listen(8000, () => {
+      console.log("app is running");
+    });
+  }
+);
