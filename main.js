@@ -1,3 +1,5 @@
+/* jshint esversion: 8 */
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -23,17 +25,23 @@ app.use(
 app.set("view engine", "ejs");
 app.use("/", router);
 
-app.post("/", (req, res) => {
-  const tasks = {
-    name: req.body.name,
-  };
-  res.send(tasks);
+app.get("/", async (req, res) => {
+  const data = await Todo.find();
+  console.log(data);
+  res.render("index.ejs", {data});
+});
+
+app.post("/", async (req, res) => {
+  console.log(req.body.itemName);
+  await new Todo({
+    name: req.body.itemName,
+  }).save();
+  res.redirect("/");
 });
 
 mongoose.connect(
   process.env.DATABASE_URL,
-  {useNewUrlParser: true},
-  {useUnifiedTopology: true},
+  {useNewUrlParser: true, useUnifiedTopology: true},
   (err) => {
     console.log(err);
     if (err) return;
