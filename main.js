@@ -32,10 +32,24 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  console.log(req.body.itemName);
   await new Todo({
     name: req.body.itemName,
   }).save();
+  res.redirect("/");
+});
+
+app.get("/edit/:id", async (req, res) => {
+  const todo = await Todo.findOne({_id: req.params.id});
+  res.render("edit.ejs", {todo});
+});
+
+app.post("/edit", async (req, res) => {
+  await Todo.updateOne({_id: req.body.id}, {name: req.body.name});
+  res.redirect("/");
+});
+
+app.get("/delete/:id", async (req, res) => {
+  await Todo.deleteOne({_id: req.body.id});
   res.redirect("/");
 });
 
