@@ -6,11 +6,22 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Reminders!</h1>
+    <h1>Hello from FED20S</h1>
+
     <form action="/edit" method="POST">
-      <input type="text" name="name" id="" value="<%=todo.name%>" />
-      <input type="text" name="id" value="<%=todo._id%>" hidden />
+      <input type="text" name="name" id="" value="<%=editOne.name%>" />
+      <input type="text" name="id" value="<%=editOne._id%>" hidden />
       <button type="submit">Update</button>
     </form>
+
+    <% for(let i=0; i<allData.length; i++){ %>
+      <div>
+        <%= allData[i].name %>
+        <a href="/edit/<%= allData[i]._id %>"> edit</a>
+        <a href="/delete/<%= allData[i]._id%>"> delete</a>
+      </div>
+
+      <% } %></allData.length;
+    >
   </body>
 </html>

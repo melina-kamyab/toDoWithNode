@@ -27,7 +27,6 @@ app.use("/", router);
 
 app.get("/", async (req, res) => {
   const data = await Todo.find();
-  console.log(data);
   res.render("index.ejs", {data});
 });
 
@@ -39,8 +38,14 @@ app.post("/", async (req, res) => {
 });
 
 app.get("/edit/:id", async (req, res) => {
-  const todo = await Todo.findOne({_id: req.params.id});
-  res.render("edit.ejs", {todo});
+  const allData = await Todo.find();
+  const editOne = await Todo.findOne({_id: req.params.id});
+
+  res.render("edit.ejs", {
+    allData,
+    editOne,
+    error: "",
+  });
 });
 
 app.post("/edit", async (req, res) => {

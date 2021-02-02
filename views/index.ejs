@@ -7,7 +7,9 @@
   </head>
   <body>
     <h1>Reminders!</h1>
-    <%- include("addNewTodo")%> <% for (let i=0; i < data.length; i++){%>
+    <%- include("addNewTodo")%> 
+    
+    <% for (let i=0; i < data.length; i++){%>
     <div>
       <%= data[i].name %>
       <a href="/edit/<%=data[i]._id%>">edit</a>
