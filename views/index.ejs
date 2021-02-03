@@ -7,14 +7,28 @@
   </head>
   <body>
     <h1>Reminders!</h1>
-    <%- include("addNewTodo")%> 
-    
+    <%- include("addNewTodo")%>
+    <a href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)%>&&sorted=1"
+      >Sort on date from first to latest created</a
+    >
+    <a
+      href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)%>&&sorted=-1"
+      >Sort on date from latest to first created</a
+    >
+
     <% for (let i=0; i < data.length; i++){%>
     <div>
       <%= data[i].name %>
       <a href="/edit/<%=data[i]._id%>">edit</a>
       <a href="/delete/<%=data[i]._id%>">delete</a>
     </div>
+    <%}%> <% if(totalNumberOfPages !== actualItemsShown /
+    numberOfItemsShownPerPage){%>
+    <a href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)+1%>">
+      Show more
+    </a>
+    <%} else {%>
+    <a href="/?page=1">Show less</a>
     <%}%>
   </body>
 </html>

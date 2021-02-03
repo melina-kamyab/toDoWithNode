@@ -1,11 +1,29 @@
+/* jshint esversion: 8 */
+
 const express = require("express");
 const Todo = require("../model/todo");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
+  const sorted = req.query.sorted || 1;
+  const page = req.query.page || 1;
+
+  const totalNumberOfItems = await Todo.find().countDocuments();
+  const numberOfItemsShownPerPage = 5;
+  const totalNumberOfPages = Math.ceil(
+    totalNumberOfItems / numberOfItemsShownPerPage
+  );
+  const actualItemsShown = numberOfItemsShownPerPage * page;
+
   try {
-    const data = await Todo.find();
-    res.render("index.ejs", {data});
+    const data = await Todo.find().sort({date: sorted}).limit(actualItemsShown);
+    res.render("index.ejs", {
+      data,
+      totalNumberOfItems,
+      numberOfItemsShownPerPage,
+      totalNumberOfPages,
+      actualItemsShown,
+    });
   } catch (err) {
     res.render("error.ejs", {error: err});
   }
@@ -23,7 +41,7 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/delete/:id", async (req, res) => {
-  await Todo.deleteOne({_id: req.body.id});
+  await Todo.deleteOne({_id: req.params.id});
   res.redirect("/");
 });
 
