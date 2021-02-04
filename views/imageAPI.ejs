@@ -1,0 +1,22 @@
+<script>
+  window.onload = function () {
+    console.log("DOM is loading");
+    getImage();
+  };
+
+  function getImage() {
+    console.log("funktionen körs");
+    fetch(
+      "https://api.unsplash.com/photos/random?client_id=AgjNQXdYVfQQTFf4iO5czmlVgElGSR5e7Hk_6bpKrco&orientation=landscape&query=forest&featured=true&auto=format,enhance,compress"
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        let outputContainer = document.getElementById("imageContainer");
+        outputContainer.style.backgroundImage =
+          "url('" + data.urls.raw + "&w=1500&dpr=2";
+        ("')");
+      });
+  }
+</script>

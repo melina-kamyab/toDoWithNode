@@ -3,32 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <title>Reminders</title>
+    <script src="https://kit.fontawesome.com/6c181a56ab.js" crossorigin="anonymous"></script>
   </head>
+
   <body>
-    <h1>Reminders!</h1>
-    <%- include("addNewTodo")%>
-    <a href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)%>&&sorted=1"
-      >Sort on date from first to latest created</a
-    >
-    <a
-      href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)%>&&sorted=-1"
-      >Sort on date from latest to first created</a
-    >
+
+    <div id="wrapper">   
+      <div class="dateAndTimeContainer">
+      <p class ="time">
+        <script>
+          document.write(new Date().toLocaleTimeString([], 
+          { hour: '2-digit', minute: '2-digit' }));
+      </script>
+      </p>
+      <p class= "date">
+        <script> 
+           document.write(new Date().toDateString()); 
+        </script>
+      </p>
+    </div>
+
+    <h1>Hello, whats on your mind today?</h1>
+
+    <div class = "inputContainer"><%- include("addNewTodo")%></div>
+    <div class="imageContainer"><%- include("imageAPI")%></div>
+
+    <div class="sortLinks">
+      <div class="sortLink">
+        <a
+          href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)%>&&sorted=1"
+          >Sort starting first created</a
+        >
+      </div>
+
+      <div class="sortLink">
+        <a
+          href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)%>&&sorted=-1"
+          >Sort starting latest created</a
+        >
+      </div>
+    </div>
 
     <% for (let i=0; i < data.length; i++){%>
-    <div>
+    <div class="itemContainer">
       <%= data[i].name %>
-      <a href="/edit/<%=data[i]._id%>">edit</a>
-      <a href="/delete/<%=data[i]._id%>">delete</a>
+    
+      <div class="itemLinks">
+       <a href="/edit/<%=data[i]._id%>" class="editButton">
+        <i class="far fa-edit"></i>
+      </a>
+       <a href="/delete/<%=data[i]._id%>" class="deleteButton">
+        <i class="far fa-trash-alt"></i>
+      </a>
+     </div>
     </div>
+
     <%}%> <% if(totalNumberOfPages !== actualItemsShown /
     numberOfItemsShownPerPage){%>
-    <a href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)+1%>">
-      Show more
-    </a>
+      <a href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)+1%>">
+      Show more</a>
     <%} else {%>
-    <a href="/?page=1">Show less</a>
+      <a href="/?page=1">Show less</a>
     <%}%>
   </body>
 </html>

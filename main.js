@@ -24,6 +24,7 @@ app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 app.use("/", router);
 
+
 mongoose.connect(
   process.env.DATABASE_URL,
   {useNewUrlParser: true, useUnifiedTopology: true},
