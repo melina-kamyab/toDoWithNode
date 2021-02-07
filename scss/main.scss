@@ -2,40 +2,68 @@ body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   font-size: 62.5%;
+  color: whitesmoke;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
+  text-align: center;
+  font-size: 2rem;
   font-weight: normal;
   margin-bottom: 0rem;
+  text-shadow: 0.1rem 0.1rem #303030;
+}
+
+//DESKTOP VERSION FOR HEADER
+@media screen and (min-width: 769px) {
+  h1 {
+    font-size: 3rem;
+  }
 }
 
 #wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
-  background: no-repeat center center fixed;
-  position: absolute;
-  top: 0;
-  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .dateAndTimeContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-shadow: 0.1rem 0.1rem #303030;
 
   .time {
-    font-size: 5rem;
-    font-weight: bold;
+    font-size: 7rem;
+    font-weight: normal;
     margin: 8rem 0rem 0rem;
   }
 
   .date {
     font-size: 1.5rem;
-    margin: 1.4rem 0rem 4rem;
+    margin: 1.2rem 0rem 5rem;
+  }
+}
+
+//DESKTOP VERSION FOR DATE AND TIME CONTAINER
+@media screen and (min-width: 769px) {
+  .dateAndTimeContainer > .time {
+    font-size: 8rem;
+  }
+}
+
+.inputForm {
+  width: 75%;
+  display: flex;
+  align-items: flex-end;
+}
+
+// // DESKTOP VERSION FOR FORM
+@media screen and (min-width: 769px) {
+  .inputForm {
+    width: 60%;
   }
 }
 
@@ -43,37 +71,86 @@ h1 {
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: 2px solid grey;
+  border-bottom: 3px solid lightgrey;
   outline: 0;
-  font-size: 1.3rem;
+  font-size: 2.3rem;
   color: white;
   padding: 7px 0;
   background: transparent;
-  transition: border-color 0.2s;
+  display: inline-block;
+  width: 90%;
+  text-align: center;
+}
+
+.allItems {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .itemContainer {
-  display: flex;
-  justify-content: center;
-  font-size: 1rem;
-}
-
-.warning {
-  color: red;
+  font-size: 1.5rem;
+  text-shadow: 0.1rem 0.1rem #303030;
+  font-weight: lighter;
 }
 
 .itemLinks {
   a {
-    color: black;
+    color: white;
   }
-  margin-left: 1.3rem;
-}
-.deleteButton,
-.editButton {
-  font-size: 0.9rem;
+  margin-left: 2rem;
+  display: flex;
+  justify-content: space-between;
+  display: inline-block;
 }
 
-.addButton {
+.errorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .warning {
+    background-color: red;
+    color: white;
+    font-size: 1rem;
+    width: 30vw;
+    border: 0.3rem solid darkred;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.deleteButton,
+.editButton {
+  font-size: 1rem;
+  font-weight: lighter;
+  padding: 0.3rem;
+  text-decoration: none;
+}
+
+.addButton,
+.checkbox {
   border: 0;
   font-size: 1.5rem;
+  display: inline-block;
+  color: white;
+  background-color: Transparent;
+}
+
+.page {
+  margin-top: 1rem;
+  padding-left: 3rem;
+}
+
+.page,
+.sortLink {
+  font-weight: normal;
+  font-size: 1rem;
+  color: white;
+  display: block;
+  font-size: 1rem;
+  color: white;
 }

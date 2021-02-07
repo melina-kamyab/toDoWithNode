@@ -1,26 +1,53 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <title>Edit reminders</title>
+    <script src="https://kit.fontawesome.com/6c181a56ab.js" crossorigin="anonymous"></script>
+    <%- include("imageAPI")%>
   </head>
-  <body>
-    <h1>Reminders!</h1>
 
-    <form action="/edit" method="POST">
-      <input type="text" name="name" id="" value="<%=editOne.name%>" />
+  <body>
+
+    <div id="wrapper">   
+      <div class="dateAndTimeContainer">
+      <p class ="time">
+        <script>
+          document.write(new Date().toLocaleTimeString([], 
+          { hour: '2-digit', minute: '2-digit' }));
+      </script>
+      </p>
+      <p class= "date">
+        <script> 
+           document.write(new Date().toDateString()); 
+        </script>
+      </p>
+    </div>
+
+    <form action="/edit" method="POST" class="inputForm">
+      <input type="text" name="name" id="" value="<%=editOne.name%>" class="inputField" />
       <input type="text" name="id" value="<%=editOne._id%>" hidden />
-      <button type="submit">Update</button>
+      <button type="submit" class="checkbox"><i class="far fa-check-square"></i></button>
     </form>
 
-    <% for(let i=0; i<allData.length; i++){ %>
-      <div>
+    <div class="allItems">
+      <% for (let i=0; i < allData.length; i++){%>
+      <div class="itemContainer">
+        <div class="itemLinks">
+          <a href="/edit/<%=allData[i]._id%>" class="editButton">
+           <i class="far fa-edit"></i>
+         </a>
+          <a href="/delete/<%=allData[i]._id%>" class="deleteButton">
+           <i class="far fa-trash-alt"></i>
+         </a>
+        </div>
         <%= allData[i].name %>
-        <a href="/edit/<%= allData[i]._id %>"> edit</a>
-        <a href="/delete/<%= allData[i]._id%>"> delete</a>
       </div>
-
       <% } %>
+
+
+
+    </div>
   </body>
 </html>

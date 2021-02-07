@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
     <title>Reminders</title>
     <script src="https://kit.fontawesome.com/6c181a56ab.js" crossorigin="anonymous"></script>
+    <%- include("imageAPI")%>
   </head>
 
   <body>
@@ -26,46 +27,46 @@
     </div>
 
     <h1>Hello, whats on your mind today?</h1>
-
-    <div class = "inputContainer"><%- include("addNewTodo")%></div>
-    <div class="imageContainer"><%- include("imageAPI")%></div>
+    <%- include("addNewTodo")%>
 
     <div class="sortLinks">
-      <div class="sortLink">
-        <a
+      <div >
+        <a class="sortLink"
           href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)%>&&sorted=1"
           >Sort starting first created</a
         >
       </div>
 
-      <div class="sortLink">
-        <a
+      <div>
+        <a class="sortLink"
           href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)%>&&sorted=-1"
           >Sort starting latest created</a
         >
       </div>
     </div>
 
+    <div class="allItems">
     <% for (let i=0; i < data.length; i++){%>
     <div class="itemContainer">
-      <%= data[i].name %>
-    
       <div class="itemLinks">
-       <a href="/edit/<%=data[i]._id%>" class="editButton">
-        <i class="far fa-edit"></i>
-      </a>
-       <a href="/delete/<%=data[i]._id%>" class="deleteButton">
-        <i class="far fa-trash-alt"></i>
-      </a>
-     </div>
+        <a href="/edit/<%=data[i]._id%>" class="editButton">
+         <i class="far fa-edit"></i>
+       </a>
+        <a href="/delete/<%=data[i]._id%>" class="deleteButton">
+         <i class="far fa-trash-alt"></i>
+       </a>
+      </div>
+      <%= data[i].name %>
     </div>
 
     <%}%> <% if(totalNumberOfPages !== actualItemsShown /
-    numberOfItemsShownPerPage){%>
-      <a href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)+1%>">
+    numberOfItemsShownPerPage) {%>
+      <a href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)+1%>" class="page">
       Show more</a>
     <%} else {%>
-      <a href="/?page=1">Show less</a>
+      <a href="/?page=1" class="page">Show less</a>
     <%}%>
-  </body>
+
+ </div>
+</body>
 </html>

@@ -7,15 +7,15 @@
   function getImage() {
     console.log("funktionen körs");
     fetch(
-      "https://api.unsplash.com/photos/random?client_id=AgjNQXdYVfQQTFf4iO5czmlVgElGSR5e7Hk_6bpKrco&orientation=landscape&query=forest&featured=true&auto=format,enhance,compress"
+      "https://api.unsplash.com/photos/random?client_id=AgjNQXdYVfQQTFf4iO5czmlVgElGSR5e7Hk_6bpKrco&orientation=landscape&query=australia&featured=true&auto=format,enhance,compress&color=black"
     )
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        let outputContainer = document.getElementById("imageContainer");
+        let outputContainer = document.body;
         outputContainer.style.backgroundImage =
-          "url('" + data.urls.raw + "&w=1500&dpr=2";
+          "url('" + data.urls.raw + "&w=800&dpr=2";
         ("')");
       });
   }
