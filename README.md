@@ -8,9 +8,9 @@ _A to-do list where all items from clients are stored MongoDB_
 
 Create a new folder
 
-1. Run npm install to install
-2. Run `https://github.com/melina-kamyab/toDoWithNode.git´
-3. Clone repo
+1. Navigate to the directory where you want to put your repository,
+2. Run git clone `https://github.com/melina-kamyab/toDoWithNode.git´
+3. Run npm install to install node modules
 
 ## Naming conventions
 
@@ -42,7 +42,9 @@ Create a new folder
 
 ## Project structure
 
-- ProjectFolder/ _ schema models, views, public and js files are placed here_
-  - _public/ _- styles folder with css-files is placed in here \*
-  - _views/ _- ejs-files is placed in here\*
-  - _scss/ _- main.scss is placed here\_
+- ProjectFolder/ _ schema models, views, public and js-files are placed here\*_
+  - _model/ _- the schemas are placed in here \*\_
+  - _public/ _- styles folder with css-files and other files that are related to styling are placed in here \*\_
+  - _routes/ _- the routes to the databas are placed in here \*\_
+  - _views/ _- ejs-files are placed in here\*\_
+  - _scss/ _- main.scss is placed here\*\_
