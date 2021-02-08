@@ -42,7 +42,7 @@ Create a new folder
 
 ## Project structure
 
-- ProjectFolder/ _ schema models, views, public and js-files are placed here_
+- ProjectFolder/ _schema models, views, public and js-files are placed here_
   - _model/ \_the schemas are placed in here_
   - _public/ \_styles folder with css-files and other files that are related to styling are placed in here_
   - _routes/ \_the routes to the databas are placed in here_
