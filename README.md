@@ -14,7 +14,7 @@ Create a new folder
 
 ## Naming conventions
 
-- Below you'll find a summary of the conventions for this project\*
+- Below you'll find a brief summary of the conventions for this project\*
 
 ### Variables
 
@@ -42,7 +42,7 @@ Create a new folder
 
 ## Project structure
 
-- ProjectFolder/ _ schema, views, scss and js files are placed here_
-  _public/ _- styles folder with css-files is placed in here \*
-  _views/ _- ejs-files is placed in here\*
-  _scss/ main.scss is placed here_
+- ProjectFolder/ _ schema models, views, public and js files are placed here_
+  - _public/ _- styles folder with css-files is placed in here \*
+  - _views/ _- ejs-files is placed in here\*
+  - _scss/ _- main.scss is placed here\_
