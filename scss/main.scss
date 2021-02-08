@@ -7,21 +7,6 @@ body {
   padding: 0;
 }
 
-h1 {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: normal;
-  margin-bottom: 0rem;
-  text-shadow: 0.1rem 0.1rem #303030;
-}
-
-//DESKTOP VERSION FOR HEADER
-@media screen and (min-width: 769px) {
-  h1 {
-    font-size: 3rem;
-  }
-}
-
 #wrapper {
   display: flex;
   flex-direction: column;
@@ -33,24 +18,42 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-shadow: 0.1rem 0.1rem #303030;
+  text-shadow: 0 1px 5px rgb(0 0 0 / 10%);
 
   .time {
     font-size: 7rem;
-    font-weight: normal;
-    margin: 8rem 0rem 0rem;
+    margin: 10rem 0rem 0rem;
+    font-weight: 500;
+    user-select: none;
+    letter-spacing: -5px;
   }
 
   .date {
     font-size: 1.5rem;
-    margin: 1.2rem 0rem 5rem;
+    margin: 0.2rem 0rem 1rem;
   }
 }
 
 //DESKTOP VERSION FOR DATE AND TIME CONTAINER
 @media screen and (min-width: 769px) {
   .dateAndTimeContainer > .time {
-    font-size: 8rem;
+    font-size: 7rem;
+  }
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0rem;
+  text-shadow: 00 1px 5px rgb(0 0 0 / 10%);
+  margin-top: 0;
+  font-weight: 500;
+}
+
+//DESKTOP VERSION FOR HEADER
+@media screen and (min-width: 769px) {
+  h1 {
+    font-size: 3rem;
   }
 }
 
@@ -63,7 +66,7 @@ h1 {
 // // DESKTOP VERSION FOR FORM
 @media screen and (min-width: 769px) {
   .inputForm {
-    width: 60%;
+    width: 35%;
   }
 }
 
@@ -141,16 +144,21 @@ h1 {
 }
 
 .page {
-  margin-top: 1rem;
-  padding-left: 3rem;
+  margin-left: 3rem;
 }
 
 .page,
-.sortLink {
+.sortButton {
+  text-align: center;
   font-weight: normal;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: white;
   display: block;
-  font-size: 1rem;
   color: white;
+  background-color: #6969698f;
+  border-radius: 3%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border-style: none;
+  text-decoration: none;
 }

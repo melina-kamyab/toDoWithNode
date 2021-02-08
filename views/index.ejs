@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/styles/main.css" />
     <title>Reminders</title>
     <script src="https://kit.fontawesome.com/6c181a56ab.js" crossorigin="anonymous"></script>
-    <%- include("imageAPI")%>
+    <%- include("imageAPI", {apiKey})%>
   </head>
 
   <body>
@@ -29,21 +29,20 @@
     <h1>Hello, whats on your mind today?</h1>
     <%- include("addNewTodo")%>
 
-    <div class="sortLinks">
-      <div >
-        <a class="sortLink"
-          href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)%>&&sorted=1"
-          >Sort starting first created</a
-        >
-      </div>
+    <% if (sorted === 1) { %>
+      <button class="sortButton" id="sortButton">Sort starting latest created</button>
+      <% } else { %>
+      <button class="sortButton" id="sortButton">Sort starting first created</button>
+      <% } %>
 
-      <div>
-        <a class="sortLink"
-          href="/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)%>&&sorted=-1"
-          >Sort starting latest created</a
-        >
-      </div>
-    </div>
+      <script>
+        const toggleSort = () => {
+          let newSortOrder = <% if (sorted === 1) { %> <%=-1%><% } else { %><%=1%><% } %>
+          window.location.href = `/?page=<%=(actualItemsShown/numberOfItemsShownPerPage)%>&sorted=${newSortOrder}`;
+        }
+        button = document.getElementById('sortButton');
+        button.addEventListener("click", toggleSort);
+      </script>
 
     <div class="allItems">
     <% for (let i=0; i < data.length; i++){%>

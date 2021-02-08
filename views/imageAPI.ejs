@@ -7,7 +7,9 @@
   function getImage() {
     console.log("funktionen körs");
     fetch(
-      "https://api.unsplash.com/photos/random?client_id=AgjNQXdYVfQQTFf4iO5czmlVgElGSR5e7Hk_6bpKrco&orientation=landscape&query=australia&featured=true&auto=format,enhance,compress&color=black"
+      "https://api.unsplash.com/photos/random?client_id=" +
+        "<%=apiKey%>" +
+        "&orientation=landscape&query=australia&featured=true&auto=format,enhance,compress&color=black"
     )
       .then((response) => {
         return response.json();

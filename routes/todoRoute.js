@@ -3,9 +3,10 @@
 const express = require("express");
 const Todo = require("../model/todo");
 const router = express.Router();
+require("dotenv").config();
 
 router.get("/", async (req, res) => {
-  const sorted = req.query.sorted || 1;
+  const sorted = parseInt(req.query.sorted) || 1;
   const page = req.query.page || 1;
 
   const totalNumberOfItems = await Todo.find().countDocuments();
@@ -17,12 +18,15 @@ router.get("/", async (req, res) => {
 
   try {
     const data = await Todo.find().sort({date: sorted}).limit(actualItemsShown);
+    const apiKey = process.env.API_KEY;
     res.render("index.ejs", {
       data,
       totalNumberOfItems,
       numberOfItemsShownPerPage,
       totalNumberOfPages,
       actualItemsShown,
+      sorted,
+      apiKey,
     });
   } catch (err) {
     res.render("error.ejs", {error: err});
@@ -48,11 +52,13 @@ router.get("/delete/:id", async (req, res) => {
 router.get("/edit/:id", async (req, res) => {
   const allData = await Todo.find();
   const editOne = await Todo.findOne({_id: req.params.id});
+  const apiKey = process.env.API_KEY;
 
   res.render("edit.ejs", {
     allData,
     editOne,
     error: "",
+    apiKey,
   });
 });
 
