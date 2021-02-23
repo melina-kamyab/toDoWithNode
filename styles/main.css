@@ -5,8 +5,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 62.5%;
   color: whitesmoke;
   height: 100%;
@@ -26,58 +25,50 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-shadow: 0 1px 5px rgb(0 0 0 / 10%);
-
-  .time {
-    font-size: 7rem;
-    margin: 10rem 0rem 0rem;
-    font-weight: 500;
-    user-select: none;
-    letter-spacing: -5px;
-  }
-
-  .date {
-    font-size: 1.5rem;
-    margin: 0.2rem 0rem 1rem;
-  }
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+.dateAndTimeContainer .time {
+  font-size: 7rem;
+  margin: 10rem 0rem 0rem;
+  font-weight: 500;
+  user-select: none;
+  letter-spacing: -5px;
+}
+.dateAndTimeContainer .date {
+  font-size: 1.5rem;
+  margin: 0.2rem 0rem 1rem;
 }
 
-//DESKTOP VERSION FOR DATE AND TIME CONTAINER
 @media screen and (min-width: 769px) {
   .dateAndTimeContainer > .time {
     font-size: 7rem;
   }
 }
-
 h1 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1rem;
-  text-shadow: 00 1px 5px rgb(0 0 0 / 10%);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   margin-top: 0;
   font-weight: 500;
 }
 
-//DESKTOP VERSION FOR HEADER
 @media screen and (min-width: 769px) {
   h1 {
     font-size: 3rem;
   }
 }
-
 .inputForm {
   width: 75%;
   display: flex;
   align-items: flex-end;
 }
 
-// // DESKTOP VERSION FOR FORM
 @media screen and (min-width: 769px) {
   .inputForm {
     width: 35%;
   }
 }
-
 .inputField {
   font-family: inherit;
   width: 100%;
@@ -107,31 +98,30 @@ h1 {
 }
 
 .itemLinks {
-  a {
-    color: white;
-  }
   margin-left: 2rem;
   display: flex;
   justify-content: space-between;
   display: inline-block;
+}
+.itemLinks a {
+  color: white;
 }
 
 .errorContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  .warning {
-    background-color: red;
-    color: white;
-    font-size: 1rem;
-    width: 30vw;
-    border: 0.3rem solid darkred;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+}
+.errorContainer .warning {
+  background-color: red;
+  color: white;
+  font-size: 1rem;
+  width: 30vw;
+  border: 0.3rem solid darkred;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .deleteButton,
@@ -170,3 +160,5 @@ h1 {
   border-style: none;
   text-decoration: none;
 }
+
+/*# sourceMappingURL=main.css.map */
