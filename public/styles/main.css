@@ -41,7 +41,7 @@ body {
 
 @media screen and (min-width: 769px) {
   .dateAndTimeContainer > .time {
-    font-size: 7rem;
+    font-size: 8rem;
   }
 }
 h1 {
