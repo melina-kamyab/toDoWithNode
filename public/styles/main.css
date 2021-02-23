@@ -1,16 +1,24 @@
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 62.5%;
   color: whitesmoke;
+  height: 100%;
   margin: 0;
   padding: 0;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 #wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.2);
+  height: 100%;
 }
 
 .dateAndTimeContainer {
