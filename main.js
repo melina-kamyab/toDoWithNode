@@ -30,7 +30,7 @@ mongoose.connect(
   (err) => {
     console.log(err);
     if (err) return;
-    app.listen(8000, () => {
+    app.listen(process.env.DATABASE_PORT || 8002, () => {
       console.log("app is running");
     });
   }
